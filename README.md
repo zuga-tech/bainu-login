@@ -40,6 +40,7 @@ http://bainu.zuga-tech.net/open/oauth2/authorize?app_id=APPID&redirect_uri=REDIR
 ```
 |名称|是否必须|描述|
 |app_id|failed|
+|------|------|
 |redirect_uri|params error|
 |scope|resource not found|
 |state|api not supported|
