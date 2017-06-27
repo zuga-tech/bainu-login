@@ -38,9 +38,9 @@
 ```
 http://bainu.zuga-tech.net/open/oauth2/authorize?app_id=APPID&redirect_uri=REDIRECT_URI&scope=SCOPE&state=STATE
 ```
-|名称|是否必须|描述|
-|app_id|failed|
-|------|------|
-|redirect_uri|params error|
-|scope|resource not found|
-|state|api not supported|
+|name|required|desc|
+|----|--------|----|
+|app_id|是|第三方网站应用唯一标识，由Bainu提供。|
+|redirect_uri|是|授权后重定向的回调链接地址，请使用urlEncode对链接进行处理。|
+|scope|是|应用授权作用域，snsapi_base （不弹出授权页面，直接跳转，只能获取用户openid），snsapi_userinfo （弹出授权页面，获取授权码code，并通过授权码可以换取access_token）|
+|state|是|重定向后会带上state参数，开发者可以填写a-zA-Z0-9的参数值，最多128字节|
