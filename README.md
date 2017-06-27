@@ -38,10 +38,8 @@
 ```
 http://bainu.zuga-tech.net/open/oauth2/authorize?app_id=APPID&redirect_uri=REDIRECT_URI&scope=SCOPE&state=STATE
 ```
-|code|desc|
-|----|----|
-|1   |failed|
-|2   |params error|
-|3   |resource not found|
-|4   |api not supported|
-|5   |need auth|
+|名称|是否必须|描述|
+|app_id|failed|
+|redirect_uri|params error|
+|scope|resource not found|
+|state|api not supported|
