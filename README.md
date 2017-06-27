@@ -45,6 +45,11 @@ http://bainu.zuga-tech.net/open/oauth2/authorize?app_id=APPID&redirect_uri=REDIR
 |scope|是|应用授权作用域，snsapi_base （不弹出授权页面，直接跳转，只能获取用户openid），snsapi_userinfo （弹出授权页面，获取授权码code，并通过授权码可以换取access_token）|
 |state|是|重定向后会带上state参数，开发者可以填写a-zA-Z0-9的参数值，最多128字节|
 
+用户授权登录之后，网页重定向到redirect_uri，并带上code或open_id
+```
+redirect_url?code=CODE 或 redirect_uri?open_id=OPENID
+```
+
 ### 2. 通过code换取网页授权access_token
 第三方应用或网站获取授权码之后后台调用OAuth2.0服务器获取AccessToken，每次调用此接口都会重新生成新的AccessToken和RefreshToken以及新的过期时间。强烈建议不要通过客户端调用此接口，由于AppSecret和AccessToken都属于绝密信息，泄露可能带来无法挽回的损失。
 ```
