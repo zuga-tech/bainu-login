@@ -36,5 +36,12 @@
 需要让用户登录授权操作时请在Bainu里打开下面链接，请注意此网页只能在Bainu里打开。授权完成之后网页自动跳转到redirect_uri。
 
 ```
-http://bainu.zuga-tech.net/web/oauth2/authorize?app_id=APPID&redirect_uri=REDIRECT_URI &scope=SCOPE&state=STATE
+http://bainu.zuga-tech.net/open/oauth2/authorize?app_id=APPID&redirect_uri=REDIRECT_URI&scope=SCOPE&state=STATE
 ```
+|code|desc|
+|----|----|
+|1   |failed|
+|2   |params error|
+|3   |resource not found|
+|4   |api not supported|
+|5   |need auth|
