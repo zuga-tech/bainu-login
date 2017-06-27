@@ -64,10 +64,13 @@ http://bainu.zuga-tech.net/open/oauth2/access_token?app_id=APPID&secret_key=SECR
 返回格式：
 ```
 {
-    ET: 0,
-    EM: '',
+    ET: int,
+    EM: string,
     M: {
-        
+        open_id: int,
+        access_token: string,
+        expires_in: int,
+        refresh_token: string
     }
 }
 ```
