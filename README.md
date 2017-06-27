@@ -40,7 +40,7 @@ http://bainu.zuga-tech.net/open/oauth2/authorize?app_id=APPID&redirect_uri=REDIR
 ```
 |name|required|desc|
 |----|--------|----|
-|app_id|是|第三方网站应用唯一标识，由Bainu提供。|
+|app_id|是|第三方应用唯一标识，由Bainu提供。|
 |redirect_uri|是|授权后重定向的回调链接地址，请使用**urlEncode**对链接进行处理。|
 |scope|是|应用授权作用域，snsapi_base （不弹出授权页面，直接跳转，只能获取用户openid），snsapi_userinfo （弹出授权页面，获取授权码code，并通过授权码可以换取access_token）|
 |state|是|重定向后会带上state参数，开发者可以填写a-zA-Z0-9的参数值，最多128字节|
@@ -57,6 +57,17 @@ http://bainu.zuga-tech.net/open/oauth2/access_token?app_id=APPID&secret_key=SECR
 ```
 |name|required|desc|
 |----|--------|----|
-|app_id|是|第三方网站应用唯一标识，由Bainu提供。|
+|app_id|是|第三方应用唯一标识，由Bainu提供。|
 |secret_key|是|第三方应用秘钥，由Bainu提供。|
 |code|是|通过前面步骤获取的code。|
+
+返回格式：
+```
+{
+    ET: 0,
+    EM: '',
+    M: {
+        
+    }
+}
+```
