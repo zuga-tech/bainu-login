@@ -62,7 +62,7 @@ http://bainu.zuga-tech.net/open/oauth2/access_token?app_id=APPID&secret_key=SECR
 |code|是|通过前面步骤获取的code。|
 
 返回格式：
-```json
+```
 {
     ET: int,
     EM: string,
