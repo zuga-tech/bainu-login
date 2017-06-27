@@ -23,11 +23,18 @@
    - **jsapi_ticket** （用于生成JS-SDK权限验证的签名，请妥善保管）
    - **可使用的api列表** （允许调用的JS接口列表）
 
-### 2. 授权流程
+### 2. 流程概述
   Bainu OAuth2.0授权登录让Bainu用户使用Bainu身份安全登录第三方移动应用或移动网站，在Bainu用户授权登录已接入Bainu OAuth2.0的第三方移动应用或移动网站后，第三方可以获取到用户的接口调用凭证（access_token），通过access_token可以进行Bainu开放平台授权关系接口调用，从而可实现获取Bainu用户基本开放信息和帮助用户实现基础开放功能等。
   
   Bainu OAuth2.0授权登录目前支持authorization_code模式，适用于拥有server端的应用授权。该模式整体流程为：
   1. 第三方发起Bainu授权登录请求，Bainu用户允许授权第三方应用后，Bainu会拉起应用或重定向到第三方网站，并且带上授权临时票据code参数。
   2. 通过code参数加上AppID和AppSecret等，通过API换取access_token。
   3. 通过access_token进行接口调用，获取用户基本数据资源或帮助用户实现基本操作。
+  
+## 授权流程
+### 1. 用户同意授权，获取code
+需要让用户登录授权操作时请在Bainu里打开下面链接，请注意此网页只能在Bainu里打开。授权完成之后网页自动跳转到redirect_uri。
 
+```
+http://bainu.zuga-tech.net/web/oauth2/authorize?app_id=APPID&redirect_uri=REDIRECT_URI &scope=SCOPE&state=STATE
+```
