@@ -74,8 +74,20 @@ http://bainu.zuga-tech.net/open/oauth2/access_token?app_id=APPID&secret_key=SECR
     }
 }
 ```
-|name|required|desc|
-|----|--------|----|
-|app_id|是|第三方应用唯一标识，由Bainu提供。|
-|secret_key|是|第三方应用秘钥，由Bainu提供。|
-|code|是|用户授权时获得的code。|
+|name|type|desc|
+|----|----|----|
+|ET|int|Error Type， 0时成功，否则失败。|
+|EM|string|Error Message，错误描述，ET=0时空。|
+|M|array|数据部分，只有ET=0时有。|
+|open_id|int|授权用户唯一标识，同一个第三方应用内保证唯一，同一个Bainu用户在同一个第三方应用上多次登录时此值不变。|
+|access_token|string|接口调用凭证，应该存储在第三方应用的服务器端，不要传递给客户端。|
+|expires_in|int|access_token有效期（秒），一般为2个小时。|
+|refresh_token|string|刷新access_token时用到。|
+
+### 3. 刷新access_token（如果需要）
+access_token是调用授权关系接口的调用凭证，由于access_token有效期（目前为2个小时）较短，当access_token超时后，可以使用refresh_token进行刷新，access_token刷新结果有两种
+1. 若access_token已超时，那么进行refresh_token会获取一个新的access_token，新的超时时间。
+2. 若access_token未超时，那么进行refresh_token不会改变access_token，但超时时间会刷新，相当于续期access_token。
+```
+http://bainu.zuga-tech.net/open/oauth2/refresh_token?open_id=OPENID&refresh_token=REFRESH_TOKEN
+```
