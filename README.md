@@ -179,3 +179,13 @@ http://bainu.zuga-tech.net/open/oauth2/user_info?open_id=OPENID&access_token=ACC
 |ET |desc|
 |---|----|
 |0|成功|
+|1|失败|
+|2|参数错误|
+|3|第三方应用不可用|
+|4|用户不可用|
+|5|Secret key 不正确|
+|6|授权码错误|
+|7|Access token错误|
+|8|Access token过期|
+|9|Refresh token错误|
+|10|Refresh token过期|
