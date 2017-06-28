@@ -76,7 +76,7 @@ http://bainu.zuga-tech.net/open/oauth2/access_token?app_id=APPID&secret_key=SECR
 ```
 |name|type|desc|
 |----|----|----|
-|ET|int|Error Type， ET=0表明成功，否则失败。|
+|ET|int|Error Type， ET=0表明成功，否则失败。请看错误码列表。|
 |EM|string|Error Message，错误描述。|
 |M|array|数据部分，只有ET=0时有。|
 |open_id|int|授权用户唯一标识，同一个第三方应用内保证唯一，同一个Bainu用户在同一个第三方应用上多次登录时此值不变。|
@@ -113,7 +113,7 @@ http://bainu.zuga-tech.net/open/oauth2/refresh_token?open_id=OPENID&refresh_toke
 ```
 |name|type|desc|
 |----|----|----|
-|ET|int|Error Type， ET=0表明成功，否则失败。|
+|ET|int|Error Type， ET=0表明成功，否则失败。请看错误码列表。|
 |EM|string|Error Message，错误描述。|
 |M|array|数据部分，只有ET=0时有。|
 |open_id|int|授权用户唯一标识，同一个第三方应用内保证唯一，同一个Bainu用户在同一个第三方应用上多次登录时此值不变。|
@@ -139,7 +139,7 @@ http://bainu.zuga-tech.net/open/oauth2/auth?open_id=OPENID&access_token=ACCESS_T
 ```
 |name|type|desc|
 |----|----|----|
-|ET|int|Error Type， ET=0表明access_token有效。|
+|ET|int|Error Type， ET=0表明access_token有效。请看错误码列表。|
 |EM|string|Error Message，错误描述。|
 
 ### 5. 通过access_token拉取用户信息
@@ -167,7 +167,7 @@ http://bainu.zuga-tech.net/open/oauth2/user_info?open_id=OPENID&access_token=ACC
 ```
 |name|type|desc|
 |----|----|----|
-|ET|int|Error Type， ET=0表明成功，否则失败。|
+|ET|int|Error Type， ET=0表明成功，否则失败。请看错误码列表。|
 |EM|string|Error Message，错误描述。|
 |M|array|数据部分，只有ET=0时有。|
 |open_id|int|授权用户唯一标识，同一个第三方应用内保证唯一，同一个Bainu用户在同一个第三方应用上多次登录时此值不变。|
