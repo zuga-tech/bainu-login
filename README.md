@@ -164,3 +164,18 @@ http://bainu.zuga-tech.net/open/oauth2/user_info?open_id=OPENID&access_token=ACC
     }
 }
 ```
+|name|type|desc|
+|----|----|----|
+|ET|int|Error Type， 0时成功，否则失败。|
+|EM|string|Error Message，错误描述，ET=0时空。|
+|M|array|数据部分，只有ET=0时有。|
+|open_id|int|授权用户唯一标识，同一个第三方应用内保证唯一，同一个Bainu用户在同一个第三方应用上多次登录时此值不变。|
+|nick_name|string|用户昵称|
+|profile|string|用户头像|
+|profile_thumb|string|用户头像缩略图|
+|gender|int|用户性别，0:女，1:男|
+
+## 错误码
+|ET |desc|
+|---|----|
+|0|成功|
