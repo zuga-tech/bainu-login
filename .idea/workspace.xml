@@ -21,11 +21,11 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="119">
-                <caret line="90" column="37" lean-forward="false" selection-start-line="90" selection-start-column="37" selection-end-line="90" selection-end-column="37" />
+              <first_editor relative-caret-position="629">
+                <caret line="164" column="1" lean-forward="true" selection-start-line="164" selection-start-column="1" selection-end-line="164" selection-end-column="1" />
                 <folding>
-                  <marker date="1498619302000" expanded="true" signature="2178:2332" ph="{...}" />
-                  <marker date="1498619302000" expanded="true" signature="2216:2330" ph="{...}" />
+                  <marker date="1498621671000" expanded="true" signature="2178:2332" ph="{...}" />
+                  <marker date="1498621671000" expanded="true" signature="2216:2330" ph="{...}" />
                 </folding>
               </first_editor>
               <second_editor />
@@ -39,6 +39,8 @@
     <findStrings>
       <find>secret</find>
       <find>open_id</find>
+      <find>web</find>
+      <find>open</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -170,12 +172,12 @@
       <option name="presentableId" value="Default" />
       <updated>1498552639829</updated>
       <workItem from="1498552641038" duration="6373000" />
-      <workItem from="1498616945923" duration="2118000" />
+      <workItem from="1498616945923" duration="2831000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8491000" />
+    <option name="totallyTimeSpent" value="9204000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="42" y="23" width="1398" height="877" extended-state="6" />
@@ -217,8 +219,8 @@
           <first_editor relative-caret-position="0">
             <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
             <folding>
-              <marker date="1498619302000" expanded="true" signature="2178:2332" ph="{...}" />
-              <marker date="1498619302000" expanded="true" signature="2216:2330" ph="{...}" />
+              <marker date="1498621671000" expanded="true" signature="2178:2332" ph="{...}" />
+              <marker date="1498621671000" expanded="true" signature="2216:2330" ph="{...}" />
             </folding>
           </first_editor>
           <second_editor />
@@ -228,11 +230,11 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="119">
-            <caret line="90" column="37" lean-forward="false" selection-start-line="90" selection-start-column="37" selection-end-line="90" selection-end-column="37" />
+          <first_editor relative-caret-position="629">
+            <caret line="164" column="1" lean-forward="true" selection-start-line="164" selection-start-column="1" selection-end-line="164" selection-end-column="1" />
             <folding>
-              <marker date="1498619302000" expanded="true" signature="2178:2332" ph="{...}" />
-              <marker date="1498619302000" expanded="true" signature="2216:2330" ph="{...}" />
+              <marker date="1498621671000" expanded="true" signature="2178:2332" ph="{...}" />
+              <marker date="1498621671000" expanded="true" signature="2216:2330" ph="{...}" />
             </folding>
           </first_editor>
           <second_editor />

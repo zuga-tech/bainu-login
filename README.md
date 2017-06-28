@@ -119,3 +119,48 @@ http://bainu.zuga-tech.net/open/oauth2/refresh_token?open_id=OPENID&refresh_toke
 |access_token|string|接口调用凭证，应该存储在第三方应用的服务器端，不要传递给客户端。|
 |expires_in|int|access_token有效期（秒），一般为2个小时。|
 |refresh_token|string|刷新access_token时用到。|
+
+### 4. 检验access_token是否有效（如果需要）
+```
+http://bainu.zuga-tech.net/open/oauth2/auth?open_id=OPENID&access_token=ACCESS_TOKEN
+```
+|name|required|desc|
+|----|--------|----|
+|open_id|是|授权用户唯一标识，同一个第三方应用内保证唯一，同一个Bainu用户在同一个第三方应用上多次登录时此值不变。|
+|access_token|是|接口调用凭证，应该存储在第三方应用的服务器端，不要传递给客户端。|
+
+返回格式：
+```
+{
+    ET: int,
+    EM: string
+}
+```
+|name|type|desc|
+|----|----|----|
+|ET|int|Error Type， ET=0表明access_token有效。|
+|EM|string|Error Message，错误描述，ET=0时空。|
+
+### 5. 通过access_token拉取用户信息
+```
+http://bainu.zuga-tech.net/open/oauth2/user_info?open_id=OPENID&access_token=ACCESS_TOKEN
+```
+|name|required|desc|
+|----|--------|----|
+|open_id|是|授权用户唯一标识，同一个第三方应用内保证唯一，同一个Bainu用户在同一个第三方应用上多次登录时此值不变。|
+|access_token|是|接口调用凭证，应该存储在第三方应用的服务器端，不要传递给客户端。|
+
+返回格式：
+```
+{
+    ET: int,
+    EM: string,
+    M: {
+        open_id: int,
+        nick_name: string,
+        profile: string,
+        profile_thumb: string,
+        gender: int
+    }
+}
+```
