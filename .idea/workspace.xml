@@ -21,11 +21,11 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="-68">
-                <caret line="151" column="20" lean-forward="false" selection-start-line="151" selection-start-column="20" selection-end-line="151" selection-end-column="20" />
+              <first_editor relative-caret-position="-153">
+                <caret line="146" column="57" lean-forward="false" selection-start-line="146" selection-start-column="57" selection-end-line="146" selection-end-column="57" />
                 <folding>
-                  <marker date="1498744756000" expanded="true" signature="2262:2416" ph="{...}" />
-                  <marker date="1498744756000" expanded="true" signature="2300:2414" ph="{...}" />
+                  <marker date="1498745650000" expanded="true" signature="2217:2371" ph="{...}" />
+                  <marker date="1498745650000" expanded="true" signature="2255:2369" ph="{...}" />
                 </folding>
               </first_editor>
               <second_editor />
@@ -176,12 +176,12 @@
       <workItem from="1498661579500" duration="60000" />
       <workItem from="1498713762025" duration="209000" />
       <workItem from="1498723474207" duration="920000" />
-      <workItem from="1498743428919" duration="1235000" />
+      <workItem from="1498743428919" duration="1385000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12831000" />
+    <option name="totallyTimeSpent" value="12981000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="42" y="23" width="1398" height="877" extended-state="6" />
@@ -223,8 +223,8 @@
           <first_editor relative-caret-position="0">
             <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
             <folding>
-              <marker date="1498744756000" expanded="true" signature="2262:2416" ph="{...}" />
-              <marker date="1498744756000" expanded="true" signature="2300:2414" ph="{...}" />
+              <marker date="1498745650000" expanded="true" signature="2217:2371" ph="{...}" />
+              <marker date="1498745650000" expanded="true" signature="2255:2369" ph="{...}" />
             </folding>
           </first_editor>
           <second_editor />
@@ -237,8 +237,8 @@
           <first_editor relative-caret-position="0">
             <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
             <folding>
-              <marker date="1498744756000" expanded="true" signature="2262:2416" ph="{...}" />
-              <marker date="1498744756000" expanded="true" signature="2300:2414" ph="{...}" />
+              <marker date="1498745650000" expanded="true" signature="2217:2371" ph="{...}" />
+              <marker date="1498745650000" expanded="true" signature="2255:2369" ph="{...}" />
             </folding>
           </first_editor>
           <second_editor />
@@ -251,8 +251,8 @@
           <first_editor relative-caret-position="0">
             <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
             <folding>
-              <marker date="1498744756000" expanded="true" signature="2262:2416" ph="{...}" />
-              <marker date="1498744756000" expanded="true" signature="2300:2414" ph="{...}" />
+              <marker date="1498745650000" expanded="true" signature="2217:2371" ph="{...}" />
+              <marker date="1498745650000" expanded="true" signature="2255:2369" ph="{...}" />
             </folding>
           </first_editor>
           <second_editor />
@@ -265,8 +265,8 @@
           <first_editor relative-caret-position="0">
             <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
             <folding>
-              <marker date="1498744756000" expanded="true" signature="2262:2416" ph="{...}" />
-              <marker date="1498744756000" expanded="true" signature="2300:2414" ph="{...}" />
+              <marker date="1498745650000" expanded="true" signature="2217:2371" ph="{...}" />
+              <marker date="1498745650000" expanded="true" signature="2255:2369" ph="{...}" />
             </folding>
           </first_editor>
           <second_editor />
@@ -276,11 +276,11 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="-68">
-            <caret line="151" column="20" lean-forward="false" selection-start-line="151" selection-start-column="20" selection-end-line="151" selection-end-column="20" />
+          <first_editor relative-caret-position="-153">
+            <caret line="146" column="57" lean-forward="false" selection-start-line="146" selection-start-column="57" selection-end-line="146" selection-end-column="57" />
             <folding>
-              <marker date="1498744756000" expanded="true" signature="2262:2416" ph="{...}" />
-              <marker date="1498744756000" expanded="true" signature="2300:2414" ph="{...}" />
+              <marker date="1498745650000" expanded="true" signature="2217:2371" ph="{...}" />
+              <marker date="1498745650000" expanded="true" signature="2255:2369" ph="{...}" />
             </folding>
           </first_editor>
           <second_editor />

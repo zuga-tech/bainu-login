@@ -53,7 +53,7 @@ redirect_url?code=CODE&state=STATE 或 redirect_uri?open_id=OPENID&state=STATE
 ### 2. 通过code换取网页授权access_token
 第三方应用或网站获得授权码之后后台调用OAuth2.0服务器获取AccessToken，每次调用此接口都会重新生成新的AccessToken和RefreshToken以及新的过期时间。强烈建议不要通过客户端调用此接口，由于SecretKey和AccessToken都属于绝密信息，泄露可能带来无法挽回的损失。
 ```
-GET/POST http://bainu.zuga-tech.net/open/oauth2/access_token?app_id=APPID&secret_key=SECRET_KEY&code=CODE
+GET/POST http://bainu.zuga-tech.net/open/oauth2/access_token
 ```
 |name|type|required|desc|
 |----|----|--------|----|
@@ -91,7 +91,7 @@ access_token是调用授权关系接口的调用凭证，由于access_token有�
 
 需要注意的是如果refresh_token过期的话，只能让用户重新授权了。
 ```
-GET/POST http://bainu.zuga-tech.net/open/oauth2/refresh_token?open_id=OPENID&refresh_token=REFRESH_TOKEN
+GET/POST http://bainu.zuga-tech.net/open/oauth2/refresh_token
 ```
 |name|type|required|desc|
 |----|----|--------|----|
@@ -123,7 +123,7 @@ GET/POST http://bainu.zuga-tech.net/open/oauth2/refresh_token?open_id=OPENID&ref
 
 ### 4. 检验access_token是否有效（如果需要）
 ```
-GET/POST http://bainu.zuga-tech.net/open/oauth2/auth?open_id=OPENID&access_token=ACCESS_TOKEN
+GET/POST http://bainu.zuga-tech.net/open/oauth2/auth
 ```
 |name|type|required|desc|
 |----|----|--------|----|
@@ -144,7 +144,7 @@ GET/POST http://bainu.zuga-tech.net/open/oauth2/auth?open_id=OPENID&access_token
 
 ### 5. 通过access_token拉取用户信息
 ```
-GET/POST http://bainu.zuga-tech.net/open/oauth2/user_info?open_id=OPENID&access_token=ACCESS_TOKEN
+GET/POST http://bainu.zuga-tech.net/open/oauth2/user_info
 ```
 |name|type|required|desc|
 |----|----|--------|----|
