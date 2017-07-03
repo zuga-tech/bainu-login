@@ -47,7 +47,7 @@ http://bainu.zuga-tech.net/open/oauth2/authorize?app_id=APPID&redirect_uri=REDIR
 
 用户授权登录之后，网页重定向到redirect_uri，并带上code或open_id
 ```
-redirect_url?code=CODE&state=STATE 或 redirect_uri?open_id=OPENID&state=STATE
+redirect_uri?code=CODE&state=STATE 或 redirect_uri?open_id=OPENID&state=STATE
 ```
 
 ### 2. 通过code换取网页授权access_token
