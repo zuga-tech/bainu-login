@@ -32,7 +32,7 @@
   3. 通过access_token进行接口调用，获取用户基本数据资源或帮助用户实现基本操作。
   
 ## 授权流程
-### 1. 用户同意授权，获取code
+### 1. 用户授权
 需要让用户登录授权操作时请在Bainu里打开下面链接，请注意此网页只能在Bainu里打开。授权完成之后网页自动跳转到redirect_uri。
 
 ```
@@ -42,15 +42,50 @@ http://bainu.zuga-tech.net/open/oauth2/authorize?app_id=APPID&redirect_uri=REDIR
 |----|----|--------|----|
 |app_id|string|是|第三方应用唯一标识，由Bainu提供。|
 |redirect_uri|string|是|授权后重定向的回调链接地址，请使用**urlEncode**对链接进行处理。|
-|scope|string|是|应用授权作用域，base （不弹出授权页面，直接跳转，只能获取用户openid），userinfo （弹出授权页面，获取授权码code，并通过授权码可以换取access_token）|
+|scope|string|是|应用授权作用域，base （不弹出授权页面，直接跳转，只能获取用户open_id，用户感觉不到授权过程），userinfo （弹出授权页面，获取授权码code，并通过授权码可以换取access_token）|
 |state|string|是|重定向后会带上state参数，开发者可以填写a-zA-Z0-9的参数值，最多128字节|
 
-用户授权登录之后，网页重定向到redirect_uri，并带上code或open_id
+用户授权登录之后，网页重定向到redirect_uri
 ```
-redirect_uri?code=CODE&state=STATE 或 redirect_uri?open_id=OPENID&state=STATE
+redirect_uri?open_id=OPEN_ID&token=TOKEN&state=STATE // scope=base时
+redirect_uri?code=CODE&state=STATE // scope=userinfo时
 ```
+|name|type|desc|
+|----|----|----|
+|open_id|int|授权用户唯一标识，同一个第三方应用内保证唯一，同一个Bainu用户在同一个第三方应用上多次登录时此值不变。|
+|token|string|验证串，用于验证open_id是否合法，有效期为1分钟，只能用一次。|
+|code|string|授权码，通过授权码可以换取用户access_token，有效期为5分钟，只能用一次。|
+|state|string|用户自定义参数。|
 
-### 2. 通过code换取网页授权access_token
+### 2. token验证open_id
+用户授权过程中如果scope参数为base的话重定向的页面将获得open_id和token两个参数。其中token是用于验证open_id是否合法（防止被恶意修改）。
+```
+GET/POST http://bainu.zuga-tech.net/open/oauth2/check
+```
+|name|type|required|desc|
+|----|----|--------|----|
+|app_id|string|是|第三方应用唯一标识，由Bainu提供。|
+|secret_key|string|是|第三方应用秘钥，由Bainu提供。|
+|token|string|是|验证串，用于验证open_id是否合法，有效期为1分钟，只能用一次。|
+
+返回格式：
+```
+{
+    ET: int,
+    EM: string,
+    M: {
+        open_id: int
+    }
+}
+```
+|name|type|desc|
+|----|----|----|
+|ET|int|Error Type， ET=0表明token合法，否则不合法。|
+|EM|string|Error Message，错误描述。|
+|M|array|数据部分，只有ET=0时有。|
+|open_id|int|token对应的open_id，开发者可以与之前获得的open_id进行比较。|
+
+### 3. code换取access_token
 第三方应用或网站获得授权码之后后台调用OAuth2.0服务器获取AccessToken，每次调用此接口都会重新生成新的AccessToken和RefreshToken以及新的过期时间。强烈建议不要通过客户端调用此接口，由于SecretKey和AccessToken都属于绝密信息，泄露可能带来无法挽回的损失。
 ```
 GET/POST http://bainu.zuga-tech.net/open/oauth2/access_token
@@ -59,7 +94,7 @@ GET/POST http://bainu.zuga-tech.net/open/oauth2/access_token
 |----|----|--------|----|
 |app_id|string|是|第三方应用唯一标识，由Bainu提供。|
 |secret_key|string|是|第三方应用秘钥，由Bainu提供。|
-|code|string|是|用户授权时获得的code。|
+|code|string|是|用户授权时获得的code，有效期为5分钟，只能用一次。|
 
 返回格式：
 ```
@@ -84,7 +119,7 @@ GET/POST http://bainu.zuga-tech.net/open/oauth2/access_token
 |expires_in|int|access_token有效期（秒），一般为2个小时。|
 |refresh_token|string|刷新access_token时用到。|
 
-### 3. 刷新access_token（如果需要）
+### 4. 刷新access_token
 access_token是调用授权关系接口的调用凭证，由于access_token有效期（目前为2个小时）较短，当access_token超时后，可以使用refresh_token进行刷新，access_token刷新结果有两种
 1. 若access_token已超时，那么进行refresh_token会获取一个新的access_token，新的超时时间。
 2. 若access_token未超时，那么进行refresh_token不会改变access_token，但超时时间会刷新，相当于续期access_token。
@@ -121,7 +156,7 @@ GET/POST http://bainu.zuga-tech.net/open/oauth2/refresh_token
 |expires_in|int|access_token有效期（秒），一般为2个小时。|
 |refresh_token|string|刷新access_token时用到。|
 
-### 4. 检验access_token是否有效（如果需要）
+### 5. access_token是否有效
 ```
 GET/POST http://bainu.zuga-tech.net/open/oauth2/auth
 ```
@@ -142,7 +177,7 @@ GET/POST http://bainu.zuga-tech.net/open/oauth2/auth
 |ET|int|Error Type， ET=0表明access_token有效。请看错误码列表。|
 |EM|string|Error Message，错误描述。|
 
-### 5. 通过access_token拉取用户信息
+### 6. 拉取用户信息
 ```
 GET/POST http://bainu.zuga-tech.net/open/oauth2/user_info
 ```
