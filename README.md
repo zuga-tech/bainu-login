@@ -46,44 +46,19 @@ http://bainu.zuga-tech.net/open/oauth2/authorize?app_id=APPID&redirect_uri=REDIR
 |state|string|否|重定向后会带上state参数，开发者可以填写a-zA-Z0-9的参数值，最多128字节|
 
 用户授权登录之后，网页重定向到redirect_uri
-```
-redirect_uri?open_id=OPEN_ID&token=TOKEN&state=STATE // scope=base时
-redirect_uri?code=CODE&state=STATE // scope=userinfo时
+```php
+// scope=base
+redirect_uri?open_id=OPEN_ID&time=TIME&token=TOKEN&state=STATE
+// scope=userinfo
+redirect_uri?code=CODE&state=STATE
 ```
 |name|type|desc|
 |----|----|----|
 |open_id|int|授权用户唯一标识，同一个第三方应用内保证唯一，同一个Bainu用户在同一个第三方应用上多次登录时此值不变。|
-|token|string|验证串，用于验证open_id是否合法，有效期为1分钟，只能用一次。|
+|time|int|Bainu服务器秒级时间戳。|
+|token|string|验证串，用于验证open_id是否合法，计算公式为： md5(OPEN_id + TIME + SECRET_KEY)。|
 |code|string|授权码，通过授权码可以换取用户access_token，有效期为5分钟，只能用一次。|
 |state|string|用户自定义参数。|
-
-### 2. token验证open_id
-用户授权过程中如果scope参数为base的话重定向的页面将获得open_id和token两个参数。其中token是用于验证open_id是否合法（防止被恶意修改）。
-```
-GET/POST http://bainu.zuga-tech.net/open/oauth2/check
-```
-|name|type|required|desc|
-|----|----|--------|----|
-|app_id|string|是|第三方应用唯一标识，由Bainu提供。|
-|secret_key|string|是|第三方应用秘钥，由Bainu提供。|
-|token|string|是|验证串，用于验证open_id是否合法，有效期为1分钟，只能用一次。|
-
-返回格式：
-```
-{
-    ET: int,
-    EM: string,
-    M: {
-        open_id: int
-    }
-}
-```
-|name|type|desc|
-|----|----|----|
-|ET|int|Error Type， ET=0表明token合法，否则不合法。|
-|EM|string|Error Message，错误描述。|
-|M|array|数据部分，只有ET=0时有。|
-|open_id|int|token对应的open_id，开发者可以与之前获得的open_id进行比较。|
 
 ### 3. code换取access_token
 第三方应用或网站获得授权码之后后台调用OAuth2.0服务器获取AccessToken，每次调用此接口都会重新生成新的AccessToken和RefreshToken以及新的过期时间。强烈建议不要通过客户端调用此接口，由于SecretKey和AccessToken都属于绝密信息，泄露可能带来无法挽回的损失。
