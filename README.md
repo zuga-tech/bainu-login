@@ -33,16 +33,19 @@
   
 ## 授权流程
 ### 1. 用户授权
-需要让用户登录授权操作时请在Bainu里打开下面链接，请注意此网页只能在Bainu里打开。授权完成之后网页自动跳转到redirect_uri。
+需要让用户登录授权操作时请打开下面链接，授权完成之后网页自动跳转到redirect_uri。
 
 ```
+// Bainu里的网页应用
 http://bainu.zuga-tech.net/open/oauth2/authorize?app_id=APPID&redirect_uri=REDIRECT_URI&scope=SCOPE&state=STATE
+// PC上的Web应用（二维码）
+http://bainu.zuga-tech.net/open/oauth2/qrconnect?app_id=APPID&redirect_uri=REDIRECT_URI&scope=SCOPE&state=STATE
 ```
 |name|type|required|desc|
 |----|----|--------|----|
 |app_id|string|是|第三方应用唯一标识，由Bainu提供。|
 |redirect_uri|string|是|授权后重定向的回调链接地址，请使用**urlEncode**对链接进行处理。|
-|scope|string|是|应用授权作用域，base （不弹出授权页面，直接跳转，只能获取用户open_id，用户感觉不到授权过程），userinfo （弹出授权页面，获取授权码code，并通过授权码可以换取access_token）|
+|scope|string|是|应用授权作用域，base （不弹出授权页面，直接跳转，只能获取用户open_id，用户感觉不到授权过程），userinfo （弹出授权页面，获取授权码code，并通过授权码可以换取access_token），二维码登录方式只能写userinfo|
 |state|string|否|重定向后会带上state参数，开发者可以填写a-zA-Z0-9的参数值，最多128字节|
 
 用户授权登录之后，网页重定向到redirect_uri
