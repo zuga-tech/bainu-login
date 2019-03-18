@@ -5,7 +5,7 @@
   移动网站OAuth2.0协议从Bainu5.2.0版本开始支持，低版本的Bainu不支持，开发者可以用UserAgent来判断当前Bainu版本。
 
 ## 准备工作
-### 1. 开发者认证
+### 开发者认证
    目前Bainu开放平台暂未开启公开注册，所以请将你的应用信息及开发者信息发送到 business@zuga-tech.com ，我们审核通过后会联系你。
    需要提供的信息（移动网站）：
    - **应用名称**
@@ -23,7 +23,7 @@
    - **jsapi_ticket** （用于生成JS-SDK权限验证的签名，请妥善保管）
    - **可使用的api列表** （允许调用的JS接口列表）
 
-### 2. 流程概述
+### 流程概述
   Bainu OAuth2.0授权登录让Bainu用户使用Bainu身份安全登录第三方移动应用或移动网站，在Bainu用户授权登录已接入Bainu OAuth2.0的第三方移动应用或移动网站后，第三方可以获取到用户的接口调用凭证（access_token），通过access_token可以进行Bainu开放平台授权关系接口调用，从而可实现获取Bainu用户基本开放信息和帮助用户实现基础开放功能等。
   
   Bainu OAuth2.0授权登录目前支持authorization_code模式，适用于拥有server端的应用授权。该模式整体流程为：
@@ -32,20 +32,20 @@
   3. 通过access_token进行接口调用，获取用户基本数据资源或帮助用户实现基本操作。
   
 ## 授权流程
-### 1. 用户授权
+### 用户授权
 需要让用户登录授权操作时请打开下面链接，授权完成之后网页自动跳转到redirect_uri。
 
 ```
 // Bainu里的网页应用
 http://bainu.zuga-tech.net/open/oauth2/authorize?app_id=APPID&redirect_uri=REDIRECT_URI&scope=SCOPE&state=STATE
-// PC上的Web应用（二维码）
+// PC上的网页应用（二维码）
 http://bainu.zuga-tech.net/open/oauth2/qrconnect?app_id=APPID&redirect_uri=REDIRECT_URI&scope=SCOPE&state=STATE
 ```
 |name|type|required|desc|
 |----|----|--------|----|
 |app_id|string|是|第三方应用唯一标识，由Bainu提供。|
 |redirect_uri|string|是|授权后重定向的回调链接地址，请使用**urlEncode**对链接进行处理。|
-|scope|string|是|应用授权作用域，base （不弹出授权页面，直接跳转，只能获取用户open_id，用户感觉不到授权过程），userinfo （弹出授权页面，获取授权码code，并通过授权码可以换取access_token），二维码登录方式只能写userinfo|
+|scope|string|是|应用授权作用域，base （不弹出授权页面，直接跳转，只能获取用户open_id，用户感觉不到授权过程），userinfo （弹出授权页面，获取授权码code，并通过授权码可以换取access_token），PC上的网页应用（二维码）登录方式只能填写userinfo|
 |state|string|否|重定向后会带上state参数，开发者可以填写a-zA-Z0-9的参数值，最多128字节|
 
 用户授权登录之后，网页重定向到redirect_uri
@@ -63,7 +63,7 @@ redirect_uri?code=CODE&state=STATE
 |code|string|授权码，通过授权码可以换取用户access_token，有效期为5分钟，只能用一次。|
 |state|string|用户自定义参数。|
 
-### 3. code换取access_token
+### code换取access_token
 第三方应用或网站获得授权码之后后台调用OAuth2.0服务器获取AccessToken，每次调用此接口都会重新生成新的AccessToken和RefreshToken以及新的过期时间。强烈建议不要通过客户端调用此接口，由于SecretKey和AccessToken都属于绝密信息，泄露可能带来无法挽回的损失。
 ```
 GET/POST http://bainu.zuga-tech.net/open/oauth2/access_token
@@ -97,7 +97,7 @@ GET/POST http://bainu.zuga-tech.net/open/oauth2/access_token
 |expires_in|int|access_token有效期（秒），一般为2个小时。|
 |refresh_token|string|刷新access_token时用到。|
 
-### 4. 刷新access_token
+### 刷新access_token
 access_token是调用授权关系接口的调用凭证，由于access_token有效期（目前为2个小时）较短，当access_token超时后，可以使用refresh_token进行刷新，access_token刷新结果有两种
 1. 若access_token已超时，那么进行refresh_token会获取一个新的access_token，新的超时时间。
 2. 若access_token未超时，那么进行refresh_token不会改变access_token，但超时时间会刷新，相当于续期access_token。
@@ -134,7 +134,7 @@ GET/POST http://bainu.zuga-tech.net/open/oauth2/refresh_token
 |expires_in|int|access_token有效期（秒），一般为2个小时。|
 |refresh_token|string|刷新access_token时用到。|
 
-### 5. access_token是否有效
+### access_token是否有效
 ```
 GET/POST http://bainu.zuga-tech.net/open/oauth2/auth
 ```
@@ -155,7 +155,7 @@ GET/POST http://bainu.zuga-tech.net/open/oauth2/auth
 |ET|int|Error Type， ET=0表明access_token有效。请看错误码列表。|
 |EM|string|Error Message，错误描述。|
 
-### 6. 拉取用户信息
+### 拉取用户信息
 ```
 GET/POST http://bainu.zuga-tech.net/open/oauth2/user_info
 ```
